@@ -30,5 +30,30 @@ for review in python_reviews:
     print(f"Sentiment: {sentiment}")
     print()
 
+def summary(review, length=30):
+    review = review.strip()
+    if len(review) <= length:
+        return review
 
+def generate_summary(review, length=30):
+    review = review.strip()
+    if len(review) <= length:
+        return review
+   
+    end = length
+    while end > 0 and review[end] != ' ':
+        end -= 1
+    
+
+    if end == 0:
+        end = length
+    
+    summary = review[:end].strip()
+    return summary + '...'
+
+for review in python_reviews:
+    summary = generate_summary(review)
+    print(f"Original Review: {review}")
+    print(f"Summary: {summary}")
+    print()
 
